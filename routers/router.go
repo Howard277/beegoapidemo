@@ -13,18 +13,10 @@ import (
 	"github.com/astaxie/beego"
 )
 
+/*
+	采用自动路由
+ */
 func init() {
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	beego.AutoRouter(&controllers.ObjectController{})
+	beego.AutoRouter(&controllers.UserController{})
 }
