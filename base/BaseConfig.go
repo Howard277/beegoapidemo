@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/mysql"
+	"github.com/astaxie/beego/logs"
 )
 
 // 数据库配置
@@ -19,4 +20,10 @@ func init() {
 	orm.RegisterDataBase(DBSource, DBType, DBConnectstr)
 	orm.SetMaxIdleConns(DBSource, MaxIdleConns)
 	orm.SetMaxOpenConns(DBSource, MaxOpenConns)
+
+	// 日志配置
+	logs.SetLogger(logs.AdapterConsole, `{"level":1}`)
+	logs.SetLogger(logs.AdapterFile, `{"filename":"`+beego.AppConfig.String("appname")+`.log"}`)
+	logs.EnableFuncCallDepth(true)
+	logs.Async()
 }
