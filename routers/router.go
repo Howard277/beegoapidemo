@@ -17,6 +17,5 @@ import (
 	采用自动路由
  */
 func init() {
-	beego.AutoRouter(&controllers.ObjectController{})
-	beego.AutoRouter(&controllers.UserController{})
+	beego.AutoRouter(&controllers.EmployeeController{})
 }

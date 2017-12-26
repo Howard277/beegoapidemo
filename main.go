@@ -2,14 +2,10 @@ package main
 
 import (
 	_ "beegoapidemo/routers"
-
 	"github.com/astaxie/beego"
+	_ "beegoapidemo/base"
 )
 
 func main() {
-	if beego.BConfig.RunMode == "dev" {
-		beego.BConfig.WebConfig.DirectoryIndex = true
-		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
-	}
 	beego.Run()
 }
